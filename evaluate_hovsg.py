@@ -23,7 +23,7 @@ def load_hovsg_graph(cfg, scene_id):
     graph_path = os.path.join(cfg.main.save_path, cfg.main.dataset, scene_id, "graph")
     
     if not os.path.exists(graph_path):
-        print(f"Graph not found at {graph_path}")
+        print(f"Graph not found at {graph_path}. Skipping scene {scene_id}.")
         return None
 
     # We need to trick the Graph init to think we are loading this specific scene
@@ -48,7 +48,7 @@ def load_hovsg_graph(cfg, scene_id):
 @hydra.main(version_base=None, config_path="HOV-SG/config", config_name="visualize_query_graph")
 def main(cfg: DictConfig):
     # 1. Load Dataset
-    dataset_root = "/workspace/Goat-core"
+    dataset_root = "/home/scene/Goat-core"
     print(f"Loading GoatDataset from {dataset_root}...")
     dataset = GoatDataset(dataset_root)
     
@@ -159,7 +159,7 @@ def main(cfg: DictConfig):
     if processed_count > 0:
         relevant_samples = [
             s for s in dataset 
-            if s['scene'] in target_scenes and s['task_type'] == 'language'
+            if s['scene'] in target_scenes and s['task_type'] == 'language' and s['scene'] in graphs and graphs[s['scene']] is not None
         ]
         
         evaluate_submission(relevant_samples, predictions, filters=['language'], threshold=1.5)
