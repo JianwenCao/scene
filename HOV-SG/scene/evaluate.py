@@ -55,7 +55,8 @@ def evaluate_submission(dataset, predictions, filters=None, threshold=1.5, verbo
         is_success = False
         for p in preds_top_k:
             for g in gt_goals:
-                dist = math.dist(p, g)
+                # Calculate distance on the ground plane (X, Z), ignoring height (Y)
+                dist = math.dist([p[0], p[2]], [g[0], g[2]])
                 if dist <= threshold:
                     is_success = True
                     break
@@ -108,7 +109,7 @@ if __name__ == "__main__":
     import random
     
     # 1. Load Dataset
-    ds = GoatDataset('/home/jianwen/data/Goat-core')
+    ds = GoatDataset('/root/autodl-tmp/Goat-core')
     
     # 2. Generate Dummy Predictions (format demo)
     print("Generating dummy predictions (approx 50% success)...")

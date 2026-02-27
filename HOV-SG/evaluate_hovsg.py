@@ -50,7 +50,7 @@ def load_hovsg_graph(cfg, scene_id):
 @hydra.main(version_base=None, config_path="config", config_name="visualize_query_graph")
 def main(cfg: DictConfig):
     # 1. Load Dataset
-    dataset_root = "/home/scene/Goat-core"
+    dataset_root = "/root/autodl-tmp/Goat-core"
     print(f"Loading GoatDataset from {dataset_root}...")
     dataset = GoatDataset(dataset_root)
     

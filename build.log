@@ -1,0 +1,244 @@
+Setting image height and width to 480 x 640
+Done! Execution time of get_dataset function: 0.02 seconds
+Saved class colors to  /root/autodl-tmp/Goat-core/dataset/4ok/gsa_classes_ram_withbg_allclasses_colors.json
+  0%|          | 0/287 [00:00<?, ?it/s]  0%|          | 1/287 [00:01<05:41,  1.19s/it]  1%|          | 2/287 [00:02<06:43,  1.42s/it]  1%|          | 3/287 [00:04<06:45,  1.43s/it]  1%|▏         | 4/287 [00:05<06:13,  1.32s/it]  2%|▏         | 5/287 [00:06<05:44,  1.22s/it]  2%|▏         | 6/287 [00:07<05:30,  1.17s/it]  2%|▏         | 7/287 [00:08<05:07,  1.10s/it]  3%|▎         | 8/287 [00:09<04:43,  1.01s/it]  3%|▎         | 9/287 [00:09<03:30,  1.32it/s]  4%|▍         | 11/287 [00:09<02:21,  1.95it/s]  4%|▍         | 12/287 [00:10<02:37,  1.74it/s]  5%|▍         | 13/287 [00:12<03:34,  1.28it/s]  5%|▍         | 14/287 [00:13<04:26,  1.02it/s]  5%|▌         | 15/287 [00:15<05:16,  1.17s/it]  6%|▌         | 16/287 [00:16<05:27,  1.21s/it]  6%|▌         | 17/287 [00:17<04:55,  1.09s/it]  6%|▋         | 18/287 [00:18<05:20,  1.19s/it]  7%|▋         | 19/287 [00:19<04:39,  1.04s/it]  7%|▋         | 20/287 [00:22<07:33,  1.70s/it]  7%|▋         | 21/287 [00:23<06:28,  1.46s/it]  8%|▊         | 22/287 [00:24<05:59,  1.36s/it]  8%|▊         | 23/287 [00:25<05:51,  1.33s/it]  8%|▊         | 24/287 [00:27<05:33,  1.27s/it]  9%|▊         | 25/287 [00:28<05:15,  1.20s/it]  9%|▉         | 26/287 [00:28<04:37,  1.06s/it]  9%|▉         | 27/287 [00:29<04:08,  1.04it/s] 10%|▉         | 28/287 [00:30<04:17,  1.01it/s] 10%|█         | 29/287 [00:31<04:02,  1.07it/s] 10%|█         | 30/287 [00:32<04:35,  1.07s/it] 11%|█         | 31/287 [00:33<04:31,  1.06s/it] 11%|█         | 32/287 [00:35<05:05,  1.20s/it] 11%|█▏        | 33/287 [00:36<05:18,  1.25s/it] 12%|█▏        | 34/287 [00:37<05:12,  1.23s/it] 12%|█▏        | 35/287 [00:39<05:45,  1.37s/it] 13%|█▎        | 36/287 [00:41<06:15,  1.50s/it] 13%|█▎        | 37/287 [00:43<06:24,  1.54s/it] 13%|█▎        | 38/287 [00:43<05:09,  1.24s/it] 14%|█▎        | 39/287 [00:44<04:15,  1.03s/it] 14%|█▍        | 40/287 [00:49<09:55,  2.41s/it] 14%|█▍        | 41/287 [00:50<07:43,  1.88s/it] 15%|█▍        | 42/287 [00:50<05:56,  1.46s/it] 15%|█▍        | 43/287 [00:52<05:34,  1.37s/it] 15%|█▌        | 44/287 [00:53<05:11,  1.28s/it] 16%|█▌        | 45/287 [00:53<04:23,  1.09s/it] 16%|█▌        | 46/287 [00:54<03:37,  1.11it/s] 16%|█▋        | 47/287 [00:54<02:54,  1.38it/s] 17%|█▋        | 49/287 [00:55<02:00,  1.97it/s] 17%|█▋        | 50/287 [00:56<03:07,  1.26it/s] 18%|█▊        | 51/287 [00:57<03:00,  1.31it/s] 18%|█▊        | 52/287 [00:57<02:41,  1.45it/s] 18%|█▊        | 53/287 [00:58<02:18,  1.68it/s] 19%|█▉        | 54/287 [00:58<02:09,  1.79it/s] 19%|█▉        | 55/287 [00:58<01:47,  2.15it/s] 20%|█▉        | 56/287 [00:59<01:32,  2.49it/s] 20%|█▉        | 57/287 [00:59<01:24,  2.74it/s] 20%|██        | 58/287 [01:00<01:34,  2.42it/s] 21%|██        | 59/287 [01:01<02:26,  1.56it/s] 21%|██        | 60/287 [01:08<09:46,  2.58s/it] 21%|██▏       | 61/287 [01:09<07:44,  2.05s/it] 22%|██▏       | 62/287 [01:10<06:45,  1.80s/it] 22%|██▏       | 63/287 [01:11<05:51,  1.57s/it] 22%|██▏       | 64/287 [01:12<05:09,  1.39s/it] 23%|██▎       | 65/287 [01:13<04:26,  1.20s/it] 23%|██▎       | 66/287 [01:13<03:50,  1.04s/it] 23%|██▎       | 67/287 [01:14<03:14,  1.13it/s] 24%|██▎       | 68/287 [01:14<02:56,  1.24it/s] 24%|██▍       | 69/287 [01:15<02:22,  1.53it/s] 24%|██▍       | 70/287 [01:15<02:18,  1.56it/s] 25%|██▍       | 71/287 [01:17<02:56,  1.22it/s] 25%|██▌       | 72/287 [01:17<02:51,  1.26it/s] 25%|██▌       | 73/287 [01:18<02:29,  1.43it/s] 26%|██▌       | 74/287 [01:19<02:51,  1.24it/s] 26%|██▌       | 75/287 [01:19<02:34,  1.37it/s] 26%|██▋       | 76/287 [01:21<03:00,  1.17it/s] 27%|██▋       | 77/287 [01:22<03:10,  1.11it/s] 27%|██▋       | 78/287 [01:22<02:49,  1.23it/s] 28%|██▊       | 79/287 [01:23<02:55,  1.18it/s] 28%|██▊       | 80/287 [01:32<11:18,  3.28s/it] 28%|██▊       | 81/287 [01:32<08:12,  2.39s/it] 29%|██▊       | 82/287 [01:33<06:23,  1.87s/it] 29%|██▉       | 83/287 [01:34<05:45,  1.69s/it] 29%|██▉       | 84/287 [01:35<04:51,  1.44s/it] 30%|██▉       | 85/287 [01:36<04:08,  1.23s/it] 30%|██▉       | 86/287 [01:37<03:45,  1.12s/it] 30%|███       | 87/287 [01:37<02:50,  1.17it/s] 31%|███       | 88/287 [01:38<02:31,  1.32it/s] 31%|███       | 89/287 [01:38<02:02,  1.61it/s] 31%|███▏      | 90/287 [01:38<01:38,  2.01it/s] 32%|███▏      | 91/287 [01:38<01:33,  2.10it/s] 32%|███▏      | 92/287 [01:39<01:29,  2.17it/s] 32%|███▏      | 93/287 [01:39<01:27,  2.21it/s] 33%|███▎      | 94/287 [01:40<01:25,  2.25it/s] 33%|███▎      | 95/287 [01:40<01:23,  2.30it/s] 33%|███▎      | 96/287 [01:41<01:22,  2.32it/s] 34%|███▍      | 97/287 [01:41<01:22,  2.31it/s] 34%|███▍      | 98/287 [01:41<01:22,  2.29it/s] 34%|███▍      | 99/287 [01:42<01:21,  2.32it/s] 35%|███▍      | 100/287 [01:42<01:19,  2.34it/s] 35%|███▌      | 101/287 [01:43<01:18,  2.38it/s] 36%|███▌      | 102/287 [01:43<01:17,  2.40it/s] 36%|███▌      | 103/287 [01:44<01:16,  2.40it/s] 36%|███▌      | 104/287 [01:44<01:16,  2.40it/s] 37%|███▋      | 105/287 [01:44<01:15,  2.40it/s] 37%|███▋      | 106/287 [01:45<01:14,  2.42it/s] 37%|███▋      | 107/287 [01:45<01:13,  2.44it/s] 38%|███▊      | 108/287 [01:46<01:14,  2.40it/s] 38%|███▊      | 109/287 [01:46<01:14,  2.40it/s] 38%|███▊      | 110/287 [01:47<01:16,  2.31it/s] 39%|███▊      | 111/287 [01:47<01:15,  2.32it/s] 39%|███▉      | 112/287 [01:47<01:14,  2.34it/s] 39%|███▉      | 113/287 [01:48<01:14,  2.34it/s] 40%|███▉      | 114/287 [01:48<01:26,  2.01it/s] 40%|████      | 115/287 [01:49<01:44,  1.65it/s] 40%|████      | 116/287 [01:50<01:54,  1.50it/s] 41%|████      | 117/287 [01:51<01:43,  1.65it/s] 41%|████      | 118/287 [01:51<01:38,  1.71it/s] 41%|████▏     | 119/287 [01:52<01:43,  1.62it/s] 42%|████▏     | 120/287 [02:02<09:29,  3.41s/it] 42%|████▏     | 121/287 [02:03<07:18,  2.64s/it] 43%|████▎     | 122/287 [02:04<06:02,  2.19s/it] 43%|████▎     | 123/287 [02:04<04:35,  1.68s/it] 43%|████▎     | 124/287 [02:05<03:42,  1.36s/it] 44%|████▎     | 125/287 [02:05<02:53,  1.07s/it] 44%|████▍     | 126/287 [02:06<03:00,  1.12s/it] 44%|████▍     | 127/287 [02:08<02:55,  1.10s/it] 45%|████▍     | 128/287 [02:09<02:55,  1.11s/it] 45%|████▍     | 129/287 [02:09<02:31,  1.04it/s] 45%|████▌     | 130/287 [02:10<02:24,  1.08it/s] 46%|████▌     | 131/287 [02:11<02:09,  1.21it/s] 46%|████▌     | 132/287 [02:11<01:40,  1.54it/s] 46%|████▋     | 133/287 [02:12<01:36,  1.60it/s] 47%|████▋     | 134/287 [02:12<01:45,  1.45it/s] 47%|████▋     | 135/287 [02:13<01:36,  1.58it/s] 47%|████▋     | 136/287 [02:13<01:16,  1.98it/s] 48%|████▊     | 137/287 [02:14<01:20,  1.87it/s] 48%|████▊     | 138/287 [02:14<01:06,  2.24it/s] 48%|████▊     | 139/287 [02:14<00:59,  2.49it/s] 49%|████▉     | 140/287 [02:24<08:10,  3.34s/it] 49%|████▉     | 141/287 [02:25<05:50,  2.40s/it] 50%|████▉     | 143/287 [02:25<03:27,  1.44s/it] 50%|█████     | 144/287 [02:26<03:18,  1.39s/it] 51%|█████     | 145/287 [02:27<02:49,  1.20s/it] 51%|█████     | 146/287 [02:28<02:51,  1.21s/it] 51%|█████     | 147/287 [02:29<02:23,  1.03s/it] 52%|█████▏    | 148/287 [02:29<02:02,  1.14it/s] 52%|█████▏    | 149/287 [02:30<01:35,  1.45it/s] 52%|█████▏    | 150/287 [02:30<01:19,  1.73it/s] 53%|█████▎    | 151/287 [02:31<01:29,  1.52it/s] 53%|█████▎    | 152/287 [02:32<01:56,  1.16it/s] 53%|█████▎    | 153/287 [02:33<01:40,  1.33it/s] 54%|█████▎    | 154/287 [02:33<01:39,  1.33it/s] 54%|█████▍    | 155/287 [02:34<01:31,  1.45it/s] 54%|█████▍    | 156/287 [02:35<01:31,  1.43it/s] 55%|█████▍    | 157/287 [02:35<01:18,  1.67it/s] 55%|█████▌    | 158/287 [02:35<01:01,  2.08it/s] 55%|█████▌    | 159/287 [02:36<01:07,  1.88it/s] 56%|█████▌    | 160/287 [02:47<08:06,  3.83s/it] 56%|█████▌    | 161/287 [02:49<06:28,  3.08s/it] 56%|█████▋    | 162/287 [02:50<05:14,  2.51s/it] 57%|█████▋    | 163/287 [02:51<04:17,  2.08s/it] 57%|█████▋    | 164/287 [02:52<03:38,  1.78s/it] 57%|█████▋    | 165/287 [02:53<03:17,  1.62s/it] 58%|█████▊    | 166/287 [02:54<02:52,  1.42s/it] 58%|█████▊    | 167/287 [02:55<02:22,  1.19s/it] 59%|█████▊    | 168/287 [02:56<02:16,  1.15s/it] 59%|█████▉    | 169/287 [02:57<02:14,  1.14s/it] 59%|█████▉    | 170/287 [02:58<02:07,  1.09s/it] 60%|█████▉    | 171/287 [02:59<01:57,  1.01s/it] 60%|█████▉    | 172/287 [03:00<01:49,  1.05it/s] 60%|██████    | 173/287 [03:01<01:47,  1.06it/s] 61%|██████    | 174/287 [03:02<01:50,  1.02it/s] 61%|██████    | 175/287 [03:03<02:11,  1.18s/it] 61%|██████▏   | 176/287 [03:05<02:27,  1.33s/it] 62%|██████▏   | 177/287 [03:07<02:38,  1.44s/it] 62%|██████▏   | 178/287 [03:09<02:57,  1.63s/it] 62%|██████▏   | 179/287 [03:11<03:01,  1.68s/it] 63%|██████▎   | 180/287 [03:24<09:25,  5.29s/it] 63%|██████▎   | 181/287 [03:25<06:50,  3.88s/it] 63%|██████▎   | 182/287 [03:26<05:15,  3.00s/it] 64%|██████▍   | 183/287 [03:27<04:07,  2.38s/it] 64%|██████▍   | 184/287 [03:27<03:13,  1.88s/it] 64%|██████▍   | 185/287 [03:28<02:33,  1.51s/it] 65%|██████▍   | 186/287 [03:29<02:04,  1.23s/it] 65%|██████▌   | 187/287 [03:29<01:43,  1.03s/it] 66%|██████▌   | 188/287 [03:30<01:36,  1.02it/s] 66%|██████▌   | 189/287 [03:31<01:42,  1.05s/it] 66%|██████▌   | 190/287 [03:32<01:36,  1.01it/s] 67%|██████▋   | 191/287 [03:33<01:31,  1.05it/s] 67%|██████▋   | 192/287 [03:35<01:48,  1.15s/it] 67%|██████▋   | 193/287 [03:36<01:46,  1.13s/it] 68%|██████▊   | 194/287 [03:38<02:29,  1.60s/it] 68%|██████▊   | 195/287 [03:39<02:09,  1.41s/it] 68%|██████▊   | 196/287 [03:41<02:14,  1.48s/it] 69%|██████▊   | 197/287 [03:42<01:46,  1.18s/it] 69%|██████▉   | 198/287 [03:43<01:41,  1.14s/it] 71%|███████▏  | 205/287 [03:43<00:24,  3.36it/s]Skipping computer monitor with area 307196.1875 > 0.9 * 307200
+Skipping closet with area 302351.34375 > 0.9 * 307200
+Skipping hall with area 302638.375 > 0.9 * 307200
+Skipping hall with area 304699.53125 > 0.9 * 307200
+Skipping hall with area 303344.90625 > 0.9 * 307200
+Skipping hall with area 304322.84375 > 0.9 * 307200
+Skipping hall with area 304609.53125 > 0.9 * 307200
+Skipping hall with area 303505.90625 > 0.9 * 307200
+Skipping hall with area 303640.0 > 0.9 * 307200
+Skipping hall with area 304173.90625 > 0.9 * 307200
+Skipping hall with area 304850.21875 > 0.9 * 307200
+Skipping hall with area 303058.3125 > 0.9 * 307200
+Skipping hall with area 303527.3125 > 0.9 * 307200
+Skipping hall with area 302580.0 > 0.9 * 307200
+Skipping hall with area 302247.65625 > 0.9 * 307200
+Skipping hall with area 302232.59375 > 0.9 * 307200
+Skipping hall with area 306846.0625 > 0.9 * 307200
+Skipping hall with area 302477.78125 > 0.9 * 307200
+Skipping hall with area 302877.53125 > 0.9 * 307200
+Skipping hall with area 300742.3125 > 0.9 * 307200
+Skipping hall with area 304307.875 > 0.9 * 307200
+Skipping hall with area 303947.15625 > 0.9 * 307200
+Skipping hall with area 300512.1875 > 0.9 * 307200
+Skipping hall with area 301625.96875 > 0.9 * 307200
+Skipping hall with area 301131.0 > 0.9 * 307200
+Skipping hall with area 303295.4375 > 0.9 * 307200
+Skipping hall with area 303901.65625 > 0.9 * 307200
+Skipping hall with area 302287.46875 > 0.9 * 307200
+Skipping hall with area 301837.21875 > 0.9 * 307200
+Skipping hall with area 302912.0625 > 0.9 * 307200
+Skipping hall with area 302347.3125 > 0.9 * 307200
+Skipping hall with area 302915.59375 > 0.9 * 307200
+Skipping hall with area 303797.1875 > 0.9 * 307200
+Skipping hall with area 304779.59375 > 0.9 * 307200
+Skipping hall with area 303781.78125 > 0.9 * 307200
+Skipping hall with area 304287.1875 > 0.9 * 307200
+Skipping hall with area 303244.59375 > 0.9 * 307200
+Skipping hall with area 286411.03125 > 0.9 * 307200
+Skipping hall with area 302083.59375 > 0.9 * 307200
+Skipping hall with area 301889.78125 > 0.9 * 307200
+Skipping hall with area 304321.71875 > 0.9 * 307200
+Skipping hall with area 303585.90625 > 0.9 * 307200
+Skipping hall with area 302261.71875 > 0.9 * 307200
+Skipping hall with area 304067.90625 > 0.9 * 307200
+Skipping hall with area 302610.125 > 0.9 * 307200
+Skipping hall with area 302716.4375 > 0.9 * 307200
+Skipping hall with area 304425.625 > 0.9 * 307200
+Skipping hall with area 303777.65625 > 0.9 * 307200
+Skipping hall with area 285656.25 > 0.9 * 307200
+Skipping hall with area 302134.40625 > 0.9 * 307200
+Skipping hall with area 301915.0 > 0.9 * 307200
+Skipping hall with area 301304.5625 > 0.9 * 307200
+Skipping hall with area 301837.375 > 0.9 * 307200
+Skipping hall with area 301194.84375 > 0.9 * 307200
+Skipping hall with area 299725.78125 > 0.9 * 307200
+Skipping hall with area 301534.59375 > 0.9 * 307200
+Skipping hall with area 307145.75 > 0.9 * 307200
+Skipping hall with area 301530.125 > 0.9 * 307200
+Skipping hall with area 303406.84375 > 0.9 * 307200
+Skipping hall with area 303219.25 > 0.9 * 307200
+Skipping hall with area 303754.6875 > 0.9 * 307200
+Skipping hall with area 303990.625 > 0.9 * 307200
+Skipping hall with area 302323.3125 > 0.9 * 307200
+Skipping hall with area 301948.46875 > 0.9 * 307200
+Skipping hall with area 302409.75 > 0.9 * 307200
+Skipping hall with area 302197.8125 > 0.9 * 307200
+Skipping hall with area 301712.0625 > 0.9 * 307200
+Skipping hall with area 302211.1875 > 0.9 * 307200
+Skipping hall with area 301720.84375 > 0.9 * 307200
+Skipping hall with area 301763.75 > 0.9 * 307200
+Skipping hall with area 303342.0625 > 0.9 * 307200
+Skipping hall with area 303253.65625 > 0.9 * 307200
+Skipping hall with area 303321.75 > 0.9 * 307200
+Skipping hall with area 304143.125 > 0.9 * 307200
+Skipping hall with area 301480.15625 > 0.9 * 307200
+Skipping hall with area 302296.125 > 0.9 * 307200
+Skipping hall with area 301930.5625 > 0.9 * 307200
+Skipping hall with area 301740.625 > 0.9 * 307200
+Skipping hall with area 299787.375 > 0.9 * 307200
+Skipping hall with area 301688.65625 > 0.9 * 307200
+Skipping hall with area 302549.84375 > 0.9 * 307200
+Skipping hall with area 301239.34375 > 0.9 * 307200
+Skipping hall with area 302506.78125 > 0.9 * 307200
+Skipping hall with area 303917.84375 > 0.9 * 307200
+Skipping hall with area 307197.59375 > 0.9 * 307200
+Skipping hall with area 302287.65625 > 0.9 * 307200
+Skipping hall with area 303135.875 > 0.9 * 307200
+Skipping hall with area 302656.625 > 0.9 * 307200
+Skipping hall with area 302913.75 > 0.9 * 307200
+Skipping hall with area 302379.78125 > 0.9 * 307200
+Skipping hall with area 303492.0625 > 0.9 * 307200
+Skipping hall with area 303818.78125 > 0.9 * 307200
+Skipping hall with area 300928.75 > 0.9 * 307200
+Skipping hall with area 302219.125 > 0.9 * 307200
+Skipping hall with area 302158.90625 > 0.9 * 307200
+Skipping hall with area 301610.71875 > 0.9 * 307200
+Skipping hall with area 300851.78125 > 0.9 * 307200
+Skipping hall with area 300538.96875 > 0.9 * 307200
+Skipping hall with area 302389.5625 > 0.9 * 307200
+Skipping hall with area 302775.25 > 0.9 * 307200
+Skipping hall with area 297859.0 > 0.9 * 307200
+Skipping hall with area 302160.59375 > 0.9 * 307200
+Skipping hall with area 303817.6875 > 0.9 * 307200
+Skipping hall with area 302866.25 > 0.9 * 307200
+Skipping hall with area 301947.90625 > 0.9 * 307200
+Skipping hall with area 301181.375 > 0.9 * 307200
+Skipping hall with area 302829.78125 > 0.9 * 307200
+Skipping hall with area 299969.375 > 0.9 * 307200
+Skipping hall with area 301169.09375 > 0.9 * 307200
+Skipping hall with area 303707.875 > 0.9 * 307200
+Skipping hall with area 297386.9375 > 0.9 * 307200
+Skipping hall with area 304181.875 > 0.9 * 307200
+Skipping hall with area 304110.34375 > 0.9 * 307200
+Skipping hall with area 303542.75 > 0.9 * 307200
+Skipping hall with area 302347.34375 > 0.9 * 307200
+Skipping hall with area 302662.59375 > 0.9 * 307200
+Skipping hall with area 302345.34375 > 0.9 * 307200
+Skipping hall with area 301479.21875 > 0.9 * 307200
+Skipping hall with area 302038.34375 > 0.9 * 307200
+Skipping hall with area 302268.78125 > 0.9 * 307200
+Skipping hall with area 302037.71875 > 0.9 * 307200
+Skipping hall with area 302461.9375 > 0.9 * 307200
+Skipping hall with area 300739.40625 > 0.9 * 307200
+Skipping hall with area 304082.84375 > 0.9 * 307200
+Skipping hall with area 302598.34375 > 0.9 * 307200
+Skipping hall with area 302256.84375 > 0.9 * 307200
+Skipping hall with area 302469.8125 > 0.9 * 307200
+Skipping hall with area 302435.8125 > 0.9 * 307200
+Skipping hall with area 303297.75 > 0.9 * 307200
+Skipping hall with area 302121.28125 > 0.9 * 307200
+Skipping hall with area 301630.125 > 0.9 * 307200
+Skipping hall with area 303193.75 > 0.9 * 307200
+Skipping hall with area 303271.375 > 0.9 * 307200
+Skipping hall with area 303329.6875 > 0.9 * 307200
+Skipping hall with area 302240.46875 > 0.9 * 307200
+Skipping hall with area 301974.21875 > 0.9 * 307200
+Skipping hall with area 299582.40625 > 0.9 * 307200
+Skipping hall with area 302599.96875 > 0.9 * 307200
+Skipping hall with area 303481.09375 > 0.9 * 307200
+Skipping hall with area 301579.3125 > 0.9 * 307200
+Skipping hall with area 302896.0 > 0.9 * 307200
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0199.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0200.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0201.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0202.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0203.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0204.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0205.pkl.gz, skipping frame.
+ 74%|███████▎  | 211/287 [03:43<00:12,  6.13it/s] 76%|███████▌  | 218/287 [03:43<00:06, 10.22it/s] 78%|███████▊  | 225/287 [03:43<00:04, 15.13it/s] 81%|████████  | 232/287 [03:43<00:02, 20.75it/s] 83%|████████▎ | 238/287 [03:43<00:01, 25.61it/s] 85%|████████▌ | 244/287 [03:43<00:01, 30.79it/s] 87%|████████▋ | 251/287 [03:43<00:00, 36.77it/s] 90%|████████▉ | 257/287 [03:44<00:00, 41.31it/s] 92%|█████████▏| 264/287 [03:44<00:00, 46.27it/s]Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0206.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0207.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0208.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0209.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0210.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0211.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0212.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0213.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0214.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0215.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0216.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0217.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0218.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0219.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0220.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0221.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0222.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0223.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0224.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0225.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0226.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0227.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0228.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0229.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0230.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0231.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0232.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0233.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0234.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0235.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0236.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0237.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0238.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0239.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0240.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0241.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0242.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0243.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0244.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0245.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0246.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0247.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0248.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0249.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0250.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0251.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0252.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0253.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0254.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0255.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0256.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0257.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0258.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0259.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0260.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0261.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0262.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0263.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0264.pkl.gz, skipping frame.
+ 94%|█████████▍| 271/287 [03:44<00:00, 49.87it/s] 97%|█████████▋| 277/287 [03:44<00:00, 52.02it/s] 99%|█████████▉| 284/287 [03:44<00:00, 54.74it/s]100%|██████████| 287/287 [03:44<00:00,  1.28it/s]
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0265.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0266.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0267.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0268.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0269.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0270.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0271.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0272.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0273.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0274.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0275.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0276.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0277.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0278.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0279.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0280.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0281.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0282.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0283.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0284.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0285.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0286.pkl.gz, skipping frame.
+Warning: Detection file not found: /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses/img0287.pkl.gz, skipping frame.
+Before filtering: 155
+After filtering: 27
+Before merging: 27
+After merging: 27
+Saved full point cloud after post-processing to /root/autodl-tmp/Goat-core/dataset/4ok/pcd_saves/full_pcd_ram_withbg_allclasses_eval_post.pkl.gz
+=== Starting BUILD stage for scene: 4ok ===
+[INFO] Detection directory exists and is not empty. Skipping detection.
+   -> /home/scene/Goat-core/dataset/4ok/gsa_detections_ram_withbg_allclasses
+Running fusion for 4ok...
+=== BUILD stage completed for 4ok ===

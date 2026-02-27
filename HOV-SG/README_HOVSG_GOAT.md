@@ -39,14 +39,14 @@ To adapt HOV-SG for the Goat-Core dataset and modernize its backend, the followi
 ### Accuracy (Success Rate @ 1.5m)
 | Scene | Success Rate |
 | :--- | :--- |
-| **4ok** | 73.17% |
-| **5cd** | 65.85% |
-| **nfv** | 65.71% |
-| **tee** | 65.85% |
-| **OVERALL** | **67.72%** |
+| **4ok** | 82.93% |
+| **5cd** | 70.73% |
+| **nfv** | 88.57% |
+| **tee** | 87.80% |
+| **OVERALL** | **82.28%** |
 
 ### Performance Improvement Analysis
-The overall success rate improved significantly (from ~51.27% to 67.72%) compared to previous baselines. This improvement is primarily attributed to:
+The overall success rate improved significantly (from ~67.72% to 82.28%) compared to previous baselines. This improvement is primarily attributed to:
 1.  **Gemini 2.0 Flash**: The transition to Gemini 2.0 Flash provides stronger natural language understanding capabilities, allowing for more accurate parsing of complex spatial queries into structured hierarchical commands.
 2.  **Optimized Prompting**: The rewritten LLM backend uses refined prompts with clear examples, enforcing a strict output format that reduces parsing errors and improves the reliability of the floor/room/object extraction.
 3.  **Robust Error Handling**: The new implementation includes better error recovery for malformed LLM outputs, ensuring fewer queries fail due to syntax issues.
@@ -57,7 +57,7 @@ The overall success rate improved significantly (from ~51.27% to 67.72%) compare
     *   `5cd`: ~15 mins
     *   `nfv`: ~5 mins
     *   `tee`: ~6 mins
-*   **Query Time**: **~1.2232 seconds** per query (Average).
+*   **Query Time**: **~2.4537 seconds** per query (Average).
 
 ### Disk Usage
 *   **Generated Graphs** (`output/goat/`): **~15.8 GB** (Contains dense point clouds, feature maps, and graph nodes).
@@ -81,10 +81,10 @@ export PYTHONPATH=$PYTHONPATH:$(pwd)/HOV-SG
 # Example for scene '4ok'
 python HOV-SG/application/create_graph.py \
     main.dataset=goat \
-    main.dataset_path=$(pwd)/Goat-core/dataset \
+    main.dataset_path=/root/autodl-tmp/Goat-core/dataset \
     main.split=. \
     main.scene_id=4ok \
-    main.save_path=$(pwd)/Goat-core/output \
+    main.save_path=/root/autodl-tmp/Goat-core/output \
     pipeline.create_graph=True \
     models.clip.checkpoint=/home/scene/HOV-SG/checkpoints/laion2b_s32b_b79k.bin \
     models.sam.checkpoint=/home/scene/HOV-SG/checkpoints/sam_vit_h_4b8939.pth
@@ -104,7 +104,7 @@ python HOV-SG/evaluate_hovsg.py \
 ```bash
 export PYTHONPATH=$PYTHONPATH:$(pwd)/HOV-SG
 python query_hovsg.py \
-    main.graph_path=$(pwd)/Goat-core/output/goat/4ok/graph \
+    main.graph_path=/root/autodl-tmp/Goat-core/output/goat/4ok/graph \
     +main.query="chair" \
     models.clip.checkpoint=/home/scene/HOV-SG/checkpoints/laion2b_s32b_b79k.bin
 ```

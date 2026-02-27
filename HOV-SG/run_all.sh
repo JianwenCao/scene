@@ -35,7 +35,7 @@ do
 
     python "$SCRIPT_DIR/application/create_graph.py" \
         main.dataset=goat \
-        main.dataset_path="$PROJECT_ROOT/Goat-core/dataset" \
+        main.dataset_path="/root/autodl-tmp/Goat-core/dataset" \
         main.split=. \
         main.scene_id="$SCENE" \
         main.save_path="/root/autodl-tmp/Goat-core/output" \
