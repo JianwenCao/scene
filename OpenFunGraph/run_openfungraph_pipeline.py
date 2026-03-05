@@ -7,6 +7,7 @@ import torch
 import numpy as np
 import open_clip
 from tqdm import tqdm
+import time
 
 # Add HOV-SG to path for GoatDataset
 sys.path.append('/home/scene/HOV-SG')
@@ -25,7 +26,7 @@ OPENFUNGRAPH_ROOT = "/home/scene/OpenFunGraph"
 GOAT_ROOT = "/root/autodl-tmp/Goat-core"
 DATASET_CONFIG = f"{OPENFUNGRAPH_ROOT}/openfungraph/dataset/dataconfigs/goat/goat.yaml"
 GSA_PATH = "/home/scene/Grounded-Segment-Anything"
-OUTPUT_ROOT = "/root/autodl-tmp/Goat-core/dataset"  # Use data disk for output
+DEFAULT_OUTPUT_ROOT = "/root/autodl-tmp/Goat-core/dataset"  # Use data disk for output
 
 # Set Env
 env = os.environ.copy()
@@ -44,14 +45,14 @@ GSA_VARIANT = f"{CLASS_SET}_{EXP_SUFFIX}"
 SAVE_SUFFIX = "eval"
 SIM_THRESHOLD = "1.0" 
 
-def run_detection(scene_id, overwrite=False):
+def run_detection(scene_id, output_root, overwrite=False):
     print(f"Running detection for {scene_id}...")
     
     cmd = [
         PYTHON_EXE,
         f"{OPENFUNGRAPH_ROOT}/openfungraph/scripts/generate_gsa_results.py",
         "--dataset_root", f"{GOAT_ROOT}/dataset",
-        "--save_root", OUTPUT_ROOT,  # Pass OUTPUT_ROOT
+        "--save_root", output_root,
         "--dataset_config", DATASET_CONFIG,
         "--scene_id", scene_id,
         "--class_set", CLASS_SET,
@@ -64,13 +65,13 @@ def run_detection(scene_id, overwrite=False):
         cmd.append("--overwrite")
     subprocess.check_call(cmd, env=env)
 
-def run_fusion(scene_id):
+def run_fusion(scene_id, output_root):
     print(f"Running fusion for {scene_id}...")
     cmd = [
         PYTHON_EXE,
         f"{OPENFUNGRAPH_ROOT}/openfungraph/slam/cfslam_pipeline_batch.py",
         f"dataset_root={GOAT_ROOT}/dataset",
-        f"+save_root={OUTPUT_ROOT}",  # Pass the new save root
+        f"+save_root={output_root}",
         f"dataset_config={DATASET_CONFIG}",
         f"scene_id={scene_id}",
         "stride=1",
@@ -91,8 +92,8 @@ def run_fusion(scene_id):
     ]
     subprocess.check_call(cmd, env=env)
 
-def load_results(scene_id):
-    path = f"{OUTPUT_ROOT}/{scene_id}/pcd_saves/full_pcd_{GSA_VARIANT}_{SAVE_SUFFIX}_post.pkl.gz"
+def load_results(scene_id, output_root):
+    path = f"{output_root}/{scene_id}/pcd_saves/full_pcd_{GSA_VARIANT}_{SAVE_SUFFIX}_post.pkl.gz"
     print(f"Loading results from {path}")
     if not os.path.exists(path):
         return []
@@ -122,31 +123,41 @@ def main():
                         help="Scene ID to process, or 'all' for all scenes (default: 4ok)")
     parser.add_argument("--overwrite", action="store_true", 
                         help="Overwrite existing results during the build process.")
+    parser.add_argument("--save_root", type=str, default=DEFAULT_OUTPUT_ROOT,
+                        help=f"Root directory to save outputs (default: {DEFAULT_OUTPUT_ROOT})")
     args = parser.parse_args()
+    
+    output_root = args.save_root
     
     ALL_SCENES = ['4ok', '5cd', 'nfv', 'tee']
     target_scenes = ALL_SCENES if args.scene == 'all' else [args.scene]
     
     # --- 1. BUILD STAGE ---
     if args.mode in ["build", "all"]:
+        all_scenes_build_start = time.time()
         for scene in target_scenes:
             print(f"\n=== Starting BUILD stage for scene: {scene} ===")
-            detection_dir = f"{OUTPUT_ROOT}/{scene}/gsa_detections_{GSA_VARIANT}"
-            fusion_output = f"{OUTPUT_ROOT}/{scene}/pcd_saves/full_pcd_{GSA_VARIANT}_{SAVE_SUFFIX}_post.pkl.gz"
+            build_start_time = time.time()
+            
+            detection_dir = f"{output_root}/{scene}/gsa_detections_{GSA_VARIANT}"
+            fusion_output = f"{output_root}/{scene}/pcd_saves/full_pcd_{GSA_VARIANT}_{SAVE_SUFFIX}_post.pkl.gz"
             
             # Check/Run Detection
+            det_start = time.time()
             if not args.overwrite and os.path.exists(detection_dir) and len(os.listdir(detection_dir)) > 0:
                 print(f"[INFO] Detection directory exists and is not empty. Skipping detection.\n   -> {detection_dir}")
+                det_time = 0
             else:
                  try:
-                    run_detection(scene, overwrite=args.overwrite)
+                    run_detection(scene, output_root, overwrite=args.overwrite)
+                    det_time = time.time() - det_start
                  except Exception as e:
                     print(f"[ERROR] Detection failed for {scene}: {e}")
                     # If detection fails, we skip fusion for this scene
                     continue
 
             # Check/Create class file (needed for fusion)
-            class_file = f"{OUTPUT_ROOT}/{scene}/gsa_classes_{GSA_VARIANT}.json"
+            class_file = f"{output_root}/{scene}/gsa_classes_{GSA_VARIANT}.json"
             if not os.path.exists(class_file) or args.overwrite:
                 print(f"[WARN] Class file missing or overwrite set. Creating default classes.")
                 default_classes = ["remote", "cabinet", "chest", "electric outlet", "drawer", "closet", 
@@ -154,19 +165,32 @@ def main():
                                    "trashcan", "stool", "window", "chair", "bed", "desk", "sofa", 
                                    "table", "lamp", "pillow", "sink", "monitor"]
                 import json
+                os.makedirs(os.path.dirname(class_file), exist_ok=True)
                 with open(class_file, 'w') as f:
                     json.dump(default_classes, f)
 
             # Check/Run Fusion
+            fusion_start = time.time()
             if not args.overwrite and os.path.exists(fusion_output):
                  print(f"[INFO] Fusion output exists. Skipping fusion.\n   -> {fusion_output}")
+                 fusion_time = 0
             else:
                  try:
-                    run_fusion(scene)
+                    run_fusion(scene, output_root)
+                    fusion_time = time.time() - fusion_start
                  except Exception as e:
                     print(f"[ERROR] Fusion failed for {scene}: {e}")
                     continue
+            
+            total_build_time = time.time() - build_start_time
             print(f"=== BUILD stage completed for {scene} ===")
+            print(f"    Detection Time: {det_time:.2f}s")
+            print(f"    Fusion Time:    {fusion_time:.2f}s")
+            print(f"    Total Build Time: {total_build_time:.2f}s")
+        
+        if len(target_scenes) > 1:
+            total_all_time = time.time() - all_scenes_build_start
+            print(f"\n[SUMMARY] Total Build Time for all {len(target_scenes)} scenes: {total_all_time:.2f}s")
 
     # --- 2. QUERY STAGE ---
     if args.mode in ["query", "all"]:
@@ -185,13 +209,13 @@ def main():
         # Load all available maps
         scene_objects_map = {}
         for scene in target_scenes:
-            result_path = f"{OUTPUT_ROOT}/{scene}/pcd_saves/full_pcd_{GSA_VARIANT}_{SAVE_SUFFIX}_post.pkl.gz"
+            result_path = f"{output_root}/{scene}/pcd_saves/full_pcd_{GSA_VARIANT}_{SAVE_SUFFIX}_post.pkl.gz"
             if not os.path.exists(result_path):
                 print(f"[WARN] Map file not found for {scene}: {result_path}. Skipping this scene.")
                 continue
             
             print(f"Loading 3D Map for {scene}...")
-            objs = load_results(scene)
+            objs = load_results(scene, output_root)
             if objs:
                 scene_objects_map[scene] = objs
                 print(f"Loaded {len(objs)} objects for {scene}.")
@@ -217,7 +241,11 @@ def main():
             "this is {}"
         ]
 
+        total_query_time = 0
+        processed_queries = 0
+
         for sample in tqdm(scene_samples):
+            start_time = time.time()
             query = sample['query']
             task_type = sample['task_type']
             scene = sample['scene']
@@ -300,44 +328,50 @@ def main():
                 # Debug print for first few
                 if len(predictions) <= 3:
                     gt_goals = sample['goals']
-                    print(f"\n[DEBUG] Scene: {scene} | Query: {query}")
-                    print(f"        Best Obj ID: {best_score:.4f}")
+                    print(f"\n[DEBUG] Scene: {scene} | Task: {task_type} | Query: {query}")
+                    print(f"        Best Obj Score: {best_score:.4f}")
                     print(f"        Pred Center: {center}")
                     print(f"        GT Goals:    {[g.tolist() for g in gt_goals]}")
+            
+            total_query_time += (time.time() - start_time)
+            processed_queries += 1
+
+        if processed_queries > 0:
+            avg_query_time = total_query_time / processed_queries
+            print(f"\nAverage Query Time: {avg_query_time:.4f} seconds ({processed_queries} queries processed)")
 
         # Submit / Evaluate
         print(f"Running evaluation metrics for scenes: {list(scene_objects_map.keys())}...")
         
-        # 1. Global stats with filter
-        print("\n--- GLOBAL LANGUAGE PERFORMANCE ---")
-        evaluate_submission(ds, predictions, filters=['language'], verbose=True)
+        # 1. Global stats
+        print("\n--- GLOBAL PERFORMANCE (Language, Image, Object) ---")
+        evaluate_submission(ds, predictions, filters=['language', 'image', 'object'], verbose=True)
         
-        # 2. Scene-wise breakdown for language only
-        print("\n--- SCENE-WISE LANGUAGE PERFORMANCE ---")
-        print(f"{'Scene ID':<15} | {'Language Samples':<18} | {'Success Rate':<12}")
-        print("-" * 50)
+        # 2. Scene-wise breakdown
+        print("\n--- SCENE-WISE PERFORMANCE BREAKDOWN ---")
+        header = f"{'Scene ID':<15} | {'Type':<10} | {'Samples':<10} | {'Success Rate':<12}"
+        print(header)
+        print("-" * len(header))
         
         for scene in target_scenes:
-            scene_lang_samples = [s for s in ds.samples if s['scene'] == scene and s['task_type'] == 'language']
-            if not scene_lang_samples:
-                continue
+            for t_type in ['language', 'image', 'object']:
+                type_samples = [s for s in ds.samples if s['scene'] == scene and s['task_type'] == t_type]
+                if not type_samples:
+                    continue
+                    
+                type_preds = {}
+                for s in type_samples:
+                    key = f"{s['scene']}/{s['episode']}/{s['target_name']}"
+                    if key in predictions:
+                        type_preds[key] = predictions[key]
                 
-            # Filter predictions for this scene and language task
-            scene_lang_preds = {}
-            for s in scene_lang_samples:
-                key = f"{s['scene']}/{s['episode']}/{s['target_name']}"
-                if key in predictions:
-                    scene_lang_preds[key] = predictions[key]
-            
-            # Use evaluate_submission to get stats for this subset
-            # Note: We pass verbose=False to get the raw numbers
-            stats, _ = evaluate_submission(scene_lang_samples, scene_lang_preds, filters=['language'], verbose=False)
-            
-            lang_stats = stats['language']
-            success_rate = (lang_stats['success'] / lang_stats['total'] * 100) if lang_stats['total'] > 0 else 0
-            
-            print(f"{scene:<15} | {lang_stats['total']:<18} | {success_rate:.2f}%")
-        print("-" * 50)
+                stats, _ = evaluate_submission(type_samples, type_preds, filters=[t_type], verbose=False)
+                
+                t_stats = stats[t_type]
+                success_rate = (t_stats['success'] / t_stats['total'] * 100) if t_stats['total'] > 0 else 0
+                
+                print(f"{scene:<15} | {t_type:<10} | {t_stats['total']:<10} | {success_rate:.2f}%")
+            print("-" * len(header))
 
 if __name__ == "__main__":
     main()
