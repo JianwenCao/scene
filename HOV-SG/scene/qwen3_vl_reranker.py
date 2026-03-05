@@ -11,7 +11,7 @@ from typing import Optional, List, Union, Dict, Any
 from transformers.models.qwen3_vl.modeling_qwen3_vl import Qwen3VLForConditionalGeneration
 from transformers.models.qwen3_vl.processing_qwen3_vl import Qwen3VLProcessor
 from transformers.utils import TransformersKwargs
-# from qwen_vl_utils.vision_process import process_vision_info
+from qwen_vl_utils.vision_process import process_vision_info
 
 logger = logging.getLogger(__name__)
 

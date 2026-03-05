@@ -65,6 +65,11 @@ def main(cfg: DictConfig):
     
     # Timing statistics
     query_times = {s: [] for s in target_scenes}
+    task_times = defaultdict(list)
+    
+    # Success tracking for per-scene-per-task reporting
+    # Format: scene_task_stats[scene][task_type] = {'success': 0, 'total': 0}
+    scene_task_stats = defaultdict(lambda: defaultdict(lambda: {'success': 0, 'total': 0}))
     
     # 3. Iterate samples
     print(f"Evaluating on scenes: {target_scenes}")
@@ -75,8 +80,8 @@ def main(cfg: DictConfig):
         scene_id = sample['scene']
         task_type = sample['task_type']
         
-        # Filter: Only language tasks and only target scenes
-        if task_type != 'language':
+        # Filter: Only language and object tasks and only target scenes
+        if task_type not in ['language', 'object']:
             continue
         if scene_id not in target_scenes:
             continue
@@ -93,43 +98,51 @@ def main(cfg: DictConfig):
         query = sample['query']
         key = f"{sample['scene']}/{sample['episode']}/{sample['target_name']}"
         
-        # print(f"Processing {key}: '{query}'")
-        
         candidates_3d = []
         
         t0 = time.time()
         try:
             # Try hierarchical query first
-            # We assume OpenAI key might be missing, so we catch it
             try:
                 floor, room, objs = hovsg.query_hierarchy(query, top_k=5)
-                # objs is a list of Object instances
                 for obj in objs:
                     candidates_3d.append(obj.pcd.get_center().tolist())
             except (KeyError, Exception) as e:
                 error_str = str(e)
-                if "OPENAI_KEY" in error_str or "OPENAI_API_KEY" in error_str or "GEMINI_API_KEY" in error_str or "429" in error_str or "Quota" in error_str or "RESOURCE_EXHAUSTED" in error_str:
-                    # Fallback to simple object search
-                    print(f"Key error or API Limit ({e}), falling back to simple search.")
+                if "OPENAI_KEY" in error_str or "OPENAI_API_KEY" in error_str or "GEMINI_API_KEY" in error_str:
                     obj_indices, room_indices = hovsg.query_object(query, top_k=5)
                     for obj_idx in obj_indices:
                         obj = hovsg.objects[obj_idx]
                         candidates_3d.append(obj.pcd.get_center().tolist())
                 else:
                     raise e
-            except Exception as e:
-                print(f"Error querying '{query}': {e}")
-                
         except Exception as e:
             print(f"Unexpected error: {e}")
         
         t1 = time.time()
         query_duration = t1 - t0
         query_times[scene_id].append(query_duration)
+        task_times[task_type].append(query_duration)
 
+        # Track results for detailed report
+        scene_task_stats[scene_id][task_type]['total'] += 1
+        
         if candidates_3d:
             predictions[key] = candidates_3d
             processed_count += 1
+            
+            # Simple check for immediate feedback (scene/evaluate.py handles thresholding properly later)
+            # This is just for the granular report below
+            gt_goals = sample['goals']
+            is_success = False
+            for p in candidates_3d:
+                for g in gt_goals:
+                    if math.dist([p[0], p[2]], [g[0].item() if hasattr(g, 'item') else g[0], g[2].item() if hasattr(g, 'item') else g[2]]) <= 1.5:
+                        is_success = True
+                        break
+                if is_success: break
+            if is_success:
+                scene_task_stats[scene_id][task_type]['success'] += 1
             
     print(f"Processed {processed_count} samples.")
     
@@ -156,16 +169,31 @@ def main(cfg: DictConfig):
         global_count = len(all_times)
         print("-" * 65)
         print(f"{'OVERALL':<10} | {global_avg:<20.4f} | {global_tot:<15.4f} | {global_count:<10}")
-    print("=========================\n")
+        
+        print("\n=== TASK-WISE TIMING ===")
+        for t_type, times in task_times.items():
+            print(f"{t_type:<10}: {sum(times)/len(times):.4f}s avg ({len(times)} samples)")
+    
+    print("\n=== DETAILED SCENE-TASK PERFORMANCE ===")
+    print(f"{'Scene':<10} | {'Task':<12} | {'Success':<8} | {'Total':<8} | {'Rate':<10}")
+    print("-" * 55)
+    for s in sorted(target_scenes):
+        for t in ['language', 'object']:
+            stats = scene_task_stats[s][t]
+            rate = (stats['success'] / stats['total'] * 100) if stats['total'] > 0 else 0.0
+            print(f"{s:<10} | {t:<12} | {stats['success']:<8} | {stats['total']:<8} | {rate:.2f}%")
+        print("-" * 55)
+    print("========================================\n")
+
     
     # 4. Run Evaluation
     if processed_count > 0:
         relevant_samples = [
             s for s in dataset 
-            if s['scene'] in target_scenes and s['task_type'] == 'language' and s['scene'] in graphs and graphs[s['scene']] is not None
+            if s['scene'] in target_scenes and s['task_type'] in ['language', 'object'] and s['scene'] in graphs and graphs[s['scene']] is not None
         ]
         
-        evaluate_submission(relevant_samples, predictions, filters=['language'], threshold=1.5)
+        evaluate_submission(relevant_samples, predictions, filters=['language', 'object'], threshold=1.5)
     else:
         print("No samples processed.")
 

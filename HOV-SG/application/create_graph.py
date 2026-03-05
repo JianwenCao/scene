@@ -1,4 +1,5 @@
 import os
+import time
 import hydra
 from omegaconf import DictConfig
 from hovsg.graph.graph import Graph
@@ -8,6 +9,7 @@ from hovsg.graph.graph import Graph
 
 @hydra.main(version_base=None, config_path="../config", config_name="create_graph")
 def main(params: DictConfig):
+    start_time = time.time()
     # create logging directory
     save_dir = os.path.join(params.main.save_path, params.main.dataset, params.main.scene_id)
     params.main.save_path = save_dir
@@ -35,6 +37,9 @@ def main(params: DictConfig):
         hovsg.build_graph(save_path=save_dir)
     else:
         print("Skipping hierarchical scene graph creation for Replica and ScanNet datasets.")
+
+    total_time = time.time() - start_time
+    print(f"\n[INFO] Total Graph Creation Time for {params.main.scene_id}: {total_time:.2f} seconds")
 
 if __name__ == "__main__":
     main()

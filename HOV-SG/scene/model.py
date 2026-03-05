@@ -290,7 +290,7 @@ def visualize_projection(image_path, mask, center_3d, pose, intrinsics, save_pat
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--model_type", default="siglip-giant", help="Select model type: clip-base, siglip, clip-large, qwen3-vl-2b")
-parser.add_argument("--reranker", default=None, help="Optional reranker model: qwen3-vl-reranker-2b, qwen3-vl-reranker-8b, qwen3-vl-4b-instruct, qwen3-vl-thinking-8b or HF path")
+parser.add_argument("--reranker", default="qwen3-vl-reranker-2b", help="Optional reranker model: qwen3-vl-reranker-2b, qwen3-vl-reranker-8b, qwen3-vl-4b-instruct, qwen3-vl-thinking-8b or HF path")
 parser.add_argument("--rerank_strategy", default="all_at_once", choices=["one_by_one", "all_at_once"], help="Reranking strategy for thinking model")
 parser.add_argument("--use_diversity_filter", action="store_true", help="Filter out too-similar images during retrieval")
 parser.add_argument("--visualize", action="store_true", help="Enable visualization")
